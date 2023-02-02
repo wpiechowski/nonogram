@@ -48,7 +48,6 @@ def solve_full(board: Board, painter, trace=None):
             b = board.copy()
             b.set_mask(y, x, val)
             dof = solve_simple(b, painter)
-            # print(trace, (y, x), color["id"], dof)
             if b.is_solved(dof):
                 return b
             if dof > 0:
