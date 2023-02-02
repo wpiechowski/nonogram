@@ -5,7 +5,12 @@ from solver import solve_full
 
 
 def main():
-    board = fetch_webpbn(21683)
+    # here you give a webpbn.com puzzle number:
+    board = fetch_webpbn(32308)
+    solve_board(board, paint=True)
+
+
+def solve_board(board, paint=True):
     plt.ion()
     fig, ax = plt.subplots()
     img = board.image()
@@ -27,7 +32,7 @@ def main():
             plt.draw()
             fig.canvas.flush_events()
 
-    board = solve_full(board, painter)
+    board = solve_full(board, painter if paint else no_painter)
 
     end = time.time()
     print("time", end - start)
