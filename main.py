@@ -1,3 +1,4 @@
+from load_json import load_json
 from load_xml import fetch_webpbn
 import pylab as plt
 import time
@@ -5,9 +6,17 @@ from solver import solve_full
 
 
 def main():
-    # here you give a webpbn.com puzzle number:
-    board = fetch_webpbn(32308)
-    solve_board(board, paint=True)
+    try:
+        # here you give a webpbn.com puzzle number:
+        board = fetch_webpbn(31015)
+
+        # uncomment these 2 lines to load the puzzle from a json http://a.teall.info/nonogram/
+        # json = {"ver":[[2,2],[3,4],[3,6],[3,7],[3,5],[3,3],[1,4],[2,3],[8],[4,3],[4,6],[4,4],[3,1,2],[3,2,2],[2,1,1]],"hor":[[2,2],[3,4],[3,6],[3,7],[3,5],[3,3],[1,4],[2,3],[8],[4,3],[4,6],[4,2,1],[3,3],[3,4],[2,1,2]]}
+        # board = load_json(json)
+
+        solve_board(board, paint=True)
+    except:
+        raise
 
 
 def solve_board(board, paint=True):

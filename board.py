@@ -83,3 +83,18 @@ class Board:
                 d = self.data[y, x]
                 if d & (d - 1):
                     return y, x
+
+
+def fix_defs(defs):
+    ret = []
+    last_color = 0
+    for color, count in defs:
+        if color == last_color:
+            ret.append((0, 1))
+        ret.append((0, 0))
+        if count == 0:
+            ret.append((color, 1))
+        ret.append((color, count))
+        last_color = color
+    ret.append((0, 0))
+    return ret
