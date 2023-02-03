@@ -6,6 +6,7 @@ def solve_single(board: Board, rc: Line):
     hints = rc.fit()
     if not hints[0]:
         return -1
+    # print(rc, hints)
     ret = 0
     for n, val in enumerate(hints):
         if rc.ident[0] == 0:    # row
